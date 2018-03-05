@@ -1,0 +1,13 @@
+ARG BASE_IMAGE=alpine:latest
+FROM ${BASE_IMAGE}
+
+COPY _deployman /opt/deployman
+COPY Makefile /opt/deployman/Makefile
+
+WORKDIR /opt/deployman
+
+RUN apk add --no-cache mysql-client
+RUN make tools
+
+ENTRYPOINT ["make"]
+CMD ["build"]
