@@ -6,10 +6,10 @@ services:
 language: go
 
 go:
-  - 1.10
+  - "1.10"
 
 git:
-  depth: 10
+  depth: false
 
 before_install:
   - env | sort

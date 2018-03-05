@@ -24,6 +24,11 @@ copy_files(){
 	done
 }
 
+copy_commands(){
+	TARGET=${DEPLOYMAN_ROOT}/bin
+	cp ${DEPLOYMAN_LANG_DIR}/bin/* ${TARGET}
+}
+
 DEPLOYMAN_LANG=${1:-}
 DEPLOYMAN_PROJECT=${2:-.}
 DEPLOYMAN_ROOT=${DEPLOYMAN_PROJECT}/_deployman
@@ -44,5 +49,6 @@ if [ ! -d "${DEPLOYMAN_LANG_DIR}" ]; then
 fi
 
 ## Copy root files
-FILES=("Makefile" ".common.mk" ".travis.yml" "./README.md" "etc/commit-tag" "src/Dockerfile.devel" "src/Dockerfile.deploy" "bin/app-version.sh" "bin/ci-logic.sh" "bin/make-tools.sh" "bin/make-lint.sh")
+FILES=("Makefile" ".common.mk" ".travis.yml" "./README.md" "etc/commit-tag" "src/Dockerfile.devel" "src/Dockerfile.deploy" "bin/ci-logic.sh" "bin/commands.sh")
 copy_files ${FILES}
+copy_commands

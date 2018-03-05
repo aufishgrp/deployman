@@ -3,10 +3,11 @@ FROM ${BASE_IMAGE}
 
 COPY _deployman /opt/deployman
 COPY Makefile /opt/deployman/Makefile
+COPY .common.mk /opt/deployman/.common.mk
 
 WORKDIR /opt/deployman
 
-RUN apk add --no-cache mysql-client
+RUN apk add --no-cache make
 RUN make tools
 
 ENTRYPOINT ["make"]
